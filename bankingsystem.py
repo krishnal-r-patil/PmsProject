@@ -96,3 +96,20 @@ while True:
 
         else:
             print("Invalid option!")
+
+ def deposit(self, amount):
+    if amount <= 0:
+        print("Invalid amount!")
+        return
+    self.balance += amount
+    print(f"₹{amount} deposited successfully.")
+
+def withdraw(self, amount):
+    if amount <= 0:
+        print("Invalid amount!")
+        return
+    if amount > self.balance:
+        print("Insufficient balance!")
+    else:
+        self.balance -= amount
+        print(f"₹{amount} withdrawn successfully.")
