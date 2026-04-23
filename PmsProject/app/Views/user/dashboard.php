@@ -115,6 +115,25 @@
         .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
         .badge-pending { background: #fef3c7; color: #92400e; }
         .badge-approved { background: #d1fae5; color: #065f46; }
+
+        /* Premium Card */
+        .premium-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--gray-200);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .premium-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .card-header-gradient {
+            background: linear-gradient(135deg, var(--primary), #4f46e5);
+            padding: 1.5rem 2rem;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -155,35 +174,148 @@
 
             <h1 style="margin-bottom: 2rem;">Digital Dashboard</h1>
 
-            <!-- User Profile Information Card -->
-            <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 2rem; border-left: 5px solid var(--primary);">
-                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.5rem;">
+            <!-- Enhanced User Profile Information Card -->
+            <div class="premium-card" style="margin-bottom: 2.5rem;">
+                <div class="card-header-gradient" style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <h2 style="font-size: 1.4rem; color: var(--dark);"><i class="fas fa-id-card" style="margin-right: 10px; color: var(--primary);"></i> My Registered Profile</h2>
-                        <p style="color: var(--gray-700); font-size: 0.85rem;">Official records as per Gram Panchayat Register</p>
+                        <h2 style="font-size: 1.25rem; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-id-card-alt"></i> Official Citizen Registry
+                        </h2>
+                        <p style="font-size: 0.8rem; opacity: 0.9; margin: 0;">Verified Digital Identity of Gram Panchayat Bodarli</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-check-circle"></i> STATUS: VERIFIED
                     </div>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-                    <div>
-                        <p style="color: #64748b; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; margin-bottom: 5px;">Citizen Name</p>
-                        <p style="font-weight: 700; color: var(--dark);"><?= $citizen['name'] ?></p>
-                        <p style="font-size: 0.8rem; color: #64748b; margin-top: 5px;">S/O: <?= $citizen['father_name'] ?></p>
+                <div style="padding: 2rem;">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                        <!-- Identity Column -->
+                        <div style="display: flex; gap: 1.5rem; grid-column: span 1;">
+                            <div style="width: 85px; height: 85px; background: #eff6ff; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: var(--primary); font-weight: 800; border: 3px solid #dbeafe; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);">
+                                <?= substr($citizen['name'], 0, 1) ?>
+                            </div>
+                            <div style="flex: 1;">
+                                <p style="color: #64748b; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 2px;">Citizen Name</p>
+                                <h3 style="font-size: 1.6rem; color: var(--dark); font-weight: 900; margin-bottom: 4px; letter-spacing: -0.5px;"><?= $citizen['name'] ?></h3>
+                                <p style="font-size: 0.95rem; color: #475569; font-weight: 600; margin-bottom: 8px;">
+                                    <i class="fas fa-user-friends" style="margin-right: 8px; color: var(--primary); opacity: 0.8;"></i> S/O: <?= $citizen['father_name'] ?>
+                                </p>
+                                <div style="display: flex; gap: 6px;">
+                                    <span style="font-size: 0.7rem; background: #fffbeb; color: #92400e; padding: 4px 12px; border-radius: 50px; font-weight: 800; border: 1px solid #fef3c7;"><?= $citizen['category'] ?></span>
+                                    <span style="font-size: 0.7rem; background: #f0fdf4; color: #166534; padding: 4px 12px; border-radius: 50px; font-weight: 800; border: 1px solid #dcfce7;"><?= $citizen['occupation'] ?></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Info -->
+                        <div>
+                            <p style="color: #64748b; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 8px;">Family & ID Details</p>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 8px 12px; border-radius: 10px; border: 1px solid #f1f5f9;">
+                                    <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Family ID</span>
+                                    <span style="font-family: 'Courier New', monospace; font-weight: 800; color: var(--primary); font-size: 1rem;"><?= $citizen['family_id'] ?></span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 8px 12px; border-radius: 10px; border: 1px solid #f1f5f9;">
+                                    <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Voter ID</span>
+                                    <span style="font-weight: 700; color: var(--dark);"><?= $citizen['voter_id'] ?></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Documents -->
+                        <div>
+                            <p style="color: #64748b; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 8px;">Contact & KYC</p>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <p style="font-size: 0.95rem; font-weight: 700; color: var(--dark);"><i class="fas fa-fingerprint" style="margin-right: 10px; color: #94a3b8; width: 16px;"></i> <?= $citizen['aadhar_no'] ?></p>
+                                <p style="font-size: 0.95rem; font-weight: 700; color: var(--dark);"><i class="fas fa-phone-alt" style="margin-right: 10px; color: #94a3b8; width: 16px;"></i> <?= $citizen['phone'] ?></p>
+                            </div>
+                        </div>
+
                     </div>
-                    <div>
-                        <p style="color: #64748b; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; margin-bottom: 5px;">Family ID</p>
-                        <p style="font-weight: 700; color: var(--primary); font-family: monospace;"><?= $citizen['family_id'] ?></p>
+
+                    <!-- Additional Details Strip -->
+                    <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px dashed #e2e8f0; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; align-items: center;">
+                         <div style="border-right: 1px solid #f1f5f9; padding-right: 10px;">
+                            <p style="color: #94a3b8; font-size: 0.65rem; text-transform: uppercase; font-weight: 800; margin-bottom: 3px;">Date of Birth</p>
+                            <p style="font-size: 0.9rem; font-weight: 700; color: var(--dark);"><?= date('d M Y', strtotime($citizen['dob'])) ?></p>
+                         </div>
+                         <div style="border-right: 1px solid #f1f5f9; padding-right: 10px;">
+                            <p style="color: #94a3b8; font-size: 0.65rem; text-transform: uppercase; font-weight: 800; margin-bottom: 3px;">Gender</p>
+                            <p style="font-size: 0.9rem; font-weight: 700; color: var(--dark);"><?= $citizen['gender'] ?></p>
+                         </div>
+                         <div style="border-right: 1px solid #f1f5f9; padding-right: 10px;">
+                            <p style="color: #94a3b8; font-size: 0.65rem; text-transform: uppercase; font-weight: 800; margin-bottom: 3px;">Annual Income</p>
+                            <p style="font-size: 0.9rem; font-weight: 700; color: #10b981;">₹<?= number_format($citizen['income_annual'], 0) ?></p>
+                         </div>
+                         <div style="text-align: right;">
+                            <a href="<?= base_url('user/profile') ?>" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: #f1f5f9; color: var(--primary); text-decoration: none; border-radius: 12px; font-size: 0.85rem; font-weight: 800; transition: 0.3s; border: 1px solid #e2e8f0;">
+                                View Full Profile <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
+                            </a>
+                         </div>
                     </div>
-                    <div>
-                        <p style="color: #64748b; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; margin-bottom: 5px;">Document Details</p>
-                        <p style="font-weight: 600;"><i class="fas fa-fingerprint" style="margin-right: 5px; color: #94a3b8;"></i> <?= $citizen['aadhar_no'] ?></p>
-                        <p style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-phone" style="margin-right: 5px; color: #94a3b8;"></i> <?= $citizen['phone'] ?></p>
+
+                    <!-- Full Address Row -->
+                    <div style="margin-top: 1.5rem; background: #f8fafc; padding: 1.2rem 1.5rem; border-radius: 15px; border-left: 5px solid var(--primary); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+                        <p style="color: #64748b; font-size: 0.75rem; text-transform: uppercase; font-weight: 800; margin-bottom: 8px; letter-spacing: 0.5px;">Official Residential Full Address</p>
+                        <p style="font-size: 1.05rem; color: var(--dark); font-weight: 700; line-height: 1.6;">
+                            <i class="fas fa-home" style="margin-right: 10px; color: var(--primary); opacity: 0.7;"></i>
+                            House No. <?= $citizen['house_no'] ?>, Ward <?= $citizen['ward_no'] ?>, <?= $citizen['village'] ?>, <?= $citizen['block'] ?>, Dist. <?= $citizen['district'] ?>
+                        </p>
                     </div>
-                    <div>
-                        <p style="color: #64748b; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; margin-bottom: 5px;">Resident Status</p>
-                        <p style="font-weight: 600;">Ward <?= $citizen['ward_no'] ?>, <?= $citizen['village'] ?></p>
-                        <span style="font-size: 0.75rem; background: #eff6ff; color: var(--primary); padding: 2px 8px; border-radius: 4px; font-weight: 700; display: inline-block; margin-top: 5px;"><?= $citizen['category'] ?></span>
+                </div>
+            </div>
+
+            <!-- Village Info Grid -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem;">
+                <!-- Latest Notices -->
+                <div class="premium-card" style="padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--dark); display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-bullhorn" style="color: #f59e0b;"></i> Panchayat Notices
+                        </h3>
+                        <a href="<?= base_url('user/notices') ?>" style="font-size: 0.8rem; color: var(--primary); text-decoration: none; font-weight: 700;">View All</a>
                     </div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <?php if(!empty($notices)): ?>
+                            <?php foreach($notices as $notice): ?>
+                            <div style="display: flex; gap: 1rem; padding: 1rem; background: #f8fafc; border-radius: 12px; border: 1px solid #f1f5f9;">
+                                <div style="width: 45px; height: 45px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #f59e0b; flex-shrink: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 2px;"><?= esc($notice['title']) ?></h4>
+                                    <p style="font-size: 0.8rem; color: #64748b;"><?= date('d M Y', strtotime($notice['created_at'])) ?> • Official Announcement</p>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p style="text-align: center; color: #94a3b8; font-size: 0.9rem; padding: 1rem;">No active notices at the moment.</p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <!-- Next Meeting -->
+                <div class="premium-card" style="padding: 1.5rem; background: linear-gradient(to bottom, #ffffff, #f0f9ff);">
+                    <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--dark); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-users" style="color: var(--primary);"></i> Gram Sabha
+                    </h3>
+                    <?php if(!empty($next_meeting)): ?>
+                    <div style="text-align: center; padding: 1rem 0;">
+                        <div style="display: inline-block; padding: 10px 20px; background: white; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 1rem;">
+                            <p style="font-size: 0.75rem; color: #64748b; text-transform: uppercase; font-weight: 800;">Date of Meeting</p>
+                            <p style="font-size: 1.4rem; font-weight: 900; color: var(--primary);"><?= date('d M Y', strtotime($next_meeting['meeting_date'])) ?></p>
+                        </div>
+                        <h4 style="font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 10px;"><?= esc($next_meeting['title']) ?></h4>
+                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-bottom: 1.5rem;"><?= substr(esc($next_meeting['agenda']), 0, 100) ?>...</p>
+                        <a href="<?= base_url('user/proceedings') ?>" style="display: block; width: 100%; padding: 12px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 0.9rem;">View Agenda & Minutes</a>
+                    </div>
+                    <?php else: ?>
+                        <div style="text-align: center; padding: 2rem 0;">
+                            <i class="fas fa-calendar-alt" style="font-size: 2.5rem; color: #e2e8f0; margin-bottom: 1rem;"></i>
+                            <p style="color: #94a3b8; font-size: 0.9rem;">No upcoming meetings scheduled.</p>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
 

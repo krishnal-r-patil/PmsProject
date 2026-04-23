@@ -49,7 +49,14 @@ class User extends BaseController
             ->orderBy('severity', 'DESC')
             ->get()->getResultArray();
 
+        // Fetch active notices
+        $data['notices'] = $db->table('notices')->where('status', 'Active')->orderBy('created_at', 'DESC')->limit(3)->get()->getResultArray();
+
+        // Fetch latest/upcoming Gram Sabha meeting
+        $data['next_meeting'] = $db->table('proceedings')->orderBy('meeting_date', 'DESC')->limit(1)->get()->getRowArray();
+
         // Prevent back-button from showing dashboard after logout
+
         $this->response->setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
         $this->response->setHeader('Pragma', 'no-cache');
 
