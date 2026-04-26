@@ -25,7 +25,7 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
 
 /*
  *---------------------------------------------------------------
- * SET THE CURRENT DIRECTORY
+ * SET  THE  CURRENT  DIRECTORY
  *---------------------------------------------------------------
  */
 
@@ -39,7 +39,7 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
 
 /*
  *---------------------------------------------------------------
- * BOOTSTRAP THE APPLICATION
+ * BOOTSTRAP  THE  APPLICATION
  *---------------------------------------------------------------
  * This process sets up the path constants, loads and registers
  * our autoloader, along with Composer's, loads our constants
