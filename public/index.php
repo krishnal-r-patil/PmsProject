@@ -22,7 +22,7 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
 
     exit(1);
 }
-
+/* -------Hello MY World ---- */
 /*
  *---------------------------------------------------------------
  * SET THE CURRENT DIRECTORY
