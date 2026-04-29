@@ -1,0 +1,19 @@
+# CodeIgniter 4 gitignore
+/vendor/
+/writable/*
+!/writable/.gitkeep
+/public/uploads/*
+!/public/uploads/.gitkeep
+.env
+env
+phpunit.xml
+*.log
+*.sql
+node_modules/
+.vscode/
+.idea/
+/writable/cache/*
+/writable/debugbar/*
+/writable/logs/*
+/writable/session/*
+/writable/uploads/*
