@@ -526,7 +526,7 @@
             <div class="feature-card">
                 <div class="feature-icon">💡</div>
                 <h3>Utility Bills</h3>
-                <p>Pay your water, electricity, and local panchayat taxes online.</p>
+                <p>Pay Your Water, Electricity, and Local Panchayat taxes Online.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📚</div>
