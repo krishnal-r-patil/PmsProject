@@ -501,7 +501,7 @@
             <div class="feature-card">
                 <div class="feature-icon">⚖️</div>
                 <h3>Grievance Redressal</h3>
-                <p>A dedicated portal for citizens to raise complaints, track status, and get timely resolutions from the authority.</p>
+                <p>A dedicated Portal for citizens to raise complaints, track status, and get timely resolutions from the authority.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📜</div>
