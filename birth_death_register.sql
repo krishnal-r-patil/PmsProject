@@ -1,4 +1,4 @@
-USE pms_db;
+USE pms_db; 
 
 -- Birth & Death Register (CRS) Table
 CREATE TABLE IF NOT EXISTS birth_death_register (
