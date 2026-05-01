@@ -576,7 +576,7 @@
             <p>Bringing transparency and efficiency to local governance.</p>
         </div>
         <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; font-size: 0.9rem;">
-            &copy; 2026 E-Panchayat. All Rights Reserved. Designed for Modern India.
+            &copy; 2026 E-Panchayat.All Rights Reserved. Designed for Modern India.
         </div>
     </footer>
 
