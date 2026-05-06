@@ -1,4 +1,4 @@
-<?php
+<?php  
 $db = mysqli_connect('localhost', 'root', '', 'pms_db');
 $tables = ['meetings', 'schemes', 'proceedings'];
 foreach($tables as $t) {
