@@ -2,7 +2,7 @@
 $db = mysqli_connect('localhost', 'root', '', 'pms_db');
 $tables = ['meetings', 'schemes', 'proceedings'];
 foreach($tables as $t) {
-    echo "--- $t ---\n";
+    echo "--- $t ---\n";  
     $res = mysqli_query($db, "DESCRIBE $t");
     if($res) {
         while ($row = mysqli_fetch_assoc($res)) {
